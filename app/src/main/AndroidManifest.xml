@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ealoans.ealoans">
+    package="com.moneyloans.makemoneyandloans">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Splash"
+        <activity android:name="com.moneyloans.makemoneyandloans.Splash"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,135 +22,135 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IOFC" />
-        <activity android:name=".FlexSalary" />
-        <activity android:name=".Personal" />
-        <activity android:name=".Nira" />
-        <activity android:name=".KreditBee" />
-        <activity android:name=".Loaninstant" />
-        <activity android:name=".Dhani" />
-        <activity android:name=".Paysense" />
-        <activity android:name=".Quickcheck" />
-        <activity android:name=".Aella" />
-        <activity android:name=".Sokoloan" />
-        <activity android:name=".PalmCredit" />
-        <activity android:name=".Branch" />
-        <activity android:name=".Stawika" />
-        <activity android:name=".KCB" />
-        <activity android:name=".Fairmoney" />
-        <activity android:name=".Carbon" />
-        <activity android:name=".Ipesa" />
-        <activity android:name=".Timiza" />
-        <activity android:name=".Opesa" />
-        <activity android:name=".Tala" />
-        <activity android:name=".Zenka" />
-        <activity android:name=".OptionsActivity"
+        <activity android:name="com.moneyloans.makemoneyandloans.IOFC" />
+        <activity android:name="com.moneyloans.makemoneyandloans.FlexSalary" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Personal" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Nira" />
+        <activity android:name="com.moneyloans.makemoneyandloans.KreditBee" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Loaninstant" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Dhani" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Paysense" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Quickcheck" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Aella" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Sokoloan" />
+        <activity android:name="com.moneyloans.makemoneyandloans.PalmCredit" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Branch" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Stawika" />
+        <activity android:name="com.moneyloans.makemoneyandloans.KCB" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Fairmoney" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Carbon" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Ipesa" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Timiza" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Opesa" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Tala" />
+        <activity android:name="com.moneyloans.makemoneyandloans.Zenka" />
+        <activity android:name="com.moneyloans.makemoneyandloans.OptionsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".LandingPage"
+            android:name="com.moneyloans.makemoneyandloans.LandingPage"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".India"
+            android:name="com.moneyloans.makemoneyandloans.India"
             android:label="Loan apps in India" />
         <activity
-            android:name=".Nigeria"
+            android:name="com.moneyloans.makemoneyandloans.Nigeria"
             android:label="Loan apps in Nigeria" />
         <activity
-            android:name=".Kenya"
+            android:name="com.moneyloans.makemoneyandloans.Kenya"
             android:label="Loan apps in Kenya" />
 
 
         <activity
-            android:name=".makemoney.TransitionActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.TransitionActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.Graphic"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.Graphic"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.SocialManage"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.SocialManage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.Survey"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.Survey"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.YourServices"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.YourServices"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.JobBoard"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.JobBoard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.ResellWebhosting"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.ResellWebhosting"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.AffiliateWebsite"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.AffiliateWebsite"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.Instagram"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.Instagram"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.WebDeveloper"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.WebDeveloper"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.SellPrograming"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.SellPrograming"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.Youtube"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.Youtube"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.BuySellWebsites"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.BuySellWebsites"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".OnlineDirectory"
+            android:name="com.moneyloans.makemoneyandloans.OnlineDirectory"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.MembershipSite"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.MembershipSite"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.DigitalCourse"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.DigitalCourse"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.EcommerceActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.EcommerceActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.FreeBitcoinActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.FreeBitcoinActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".makemoney.BuySell"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.BuySell"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.Bitcoin"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.Bitcoin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.Affiliate"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.Affiliate"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.SocialMedia"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.SocialMedia"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.MarketingActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.MarketingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.AgentActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.AgentActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.BrokerActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.BrokerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.InsuranceActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.InsuranceActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.BlogActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.BlogActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.WebsiteActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.WebsiteActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.AdSpaceActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.AdSpaceActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".makemoney.MainActivity"
+            android:name="com.moneyloans.makemoneyandloans.makemoney.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
