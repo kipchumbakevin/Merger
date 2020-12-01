@@ -3,8 +3,10 @@ package com.ealoans.ealoans.makemoney;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.ealoans.ealoans.OptionsActivity;
 import com.ealoans.ealoans.R;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
@@ -40,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
             public void onInterstitialDismissed(Ad ad) {
                 // Interstitial dismissed callback
                 //  Log.e(TAG, "Interstitial ad dismissed.");
-//                if (i == 1){
-//                    loadOne();
-//                }else if (i == 2){
-//                    loadTwo();
-//                }
+                if (i == 57) {
+                    Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
 
             @Override
@@ -130,4 +132,15 @@ public class MainActivity extends AppCompatActivity {
         manager.beginTransaction().replace(R.id.fragments,fragment,fragment.getTag()).commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        i = 57;
+        if (interstitialAd.isAdLoaded()){
+            interstitialAd.show();
+        }else {
+            Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 }

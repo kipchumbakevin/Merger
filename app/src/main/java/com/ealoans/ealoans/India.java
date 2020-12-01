@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,11 +34,12 @@ import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 
 public class India extends AppCompatActivity {
+    private final String TAG = Kenya.class.getSimpleName();
+    ProgressBar pr;
+    InterstitialAdListener interstitialAdListener;
     private AdView adView;
     private InterstitialAd interstitialAd;
-    private final String TAG = Kenya.class.getSimpleName();
-    LinearLayoutCompat adContainer;
-    ProgressBar pr;
+    int i = 0;
 
     ListView listView;
     String mTitle[] = {"Instant Personal Loan App-PaySense","Dhani:Instant Personal Loan,Credit Line & Wallet","Loan Instant Personal Loan Online $ Credit Cards","Instant Personal Loan App Online Loan-KreditBee",
@@ -57,13 +59,99 @@ public class India extends AppCompatActivity {
         listView = findViewById(R.id.listview);
         pr = findViewById(R.id.pr);
         AudienceNetworkAds.initialize(this);
-        adView = new AdView(this,getString(R.string.banner), AdSize.BANNER_HEIGHT_50);
-        adContainer = findViewById(R.id.banner_container);
-        interstitialAd = new InterstitialAd(this,"607402693307934_607763939938476");
-        //607402693307934_607763939938476
-        interstitialAd.loadAd();
-        adView.loadAd();
+        adView = new AdView(India.this, getString(R.string.banner), AdSize.BANNER_HEIGHT_50);
+
+        // Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+
+        // Add the ad view to your activity layout
         adContainer.addView(adView);
+
+        // Request an ad
+        adView.loadAd();
+        interstitialAd = new InterstitialAd(India.this, getString(R.string.interstitial));
+
+        interstitialAdListener = new InterstitialAdListener() {
+            @Override
+            public void onInterstitialDisplayed(Ad ad) {
+                // Interstitial ad displayed callback
+                //  Log.e(TAG, "Interstitial ad displayed.");
+            }
+
+            @Override
+            public void onInterstitialDismissed(Ad ad) {
+                // Interstitial dismissed callback
+                //  Log.e(TAG, "Interstitial ad dismissed.");
+                if (i == 1){
+                    Intent intent = new Intent(India.this, Paysense.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 2){
+                    Intent intent = new Intent(India.this, Dhani.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 3){
+                    Intent intent = new Intent(India.this, Loaninstant.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 4){
+                    Intent intent = new Intent(India.this, KreditBee.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 5){
+                    Intent intent = new Intent(India.this, Nira.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 6){
+                    Intent intent = new Intent(India.this, Personal.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 7){
+                    Intent intent = new Intent(India.this, FlexSalary.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 8){
+                    Intent intent = new Intent(India.this, IOFC.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 57){
+                    Intent intent = new Intent(India.this, LandingPage.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+
+            @Override
+            public void onError(Ad ad, AdError adError) {
+                // Ad error callback
+                //Log.e(TAG, "Interstitial ad failed to load: " + adError.getErrorMessage());
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Interstitial ad is loaded and ready to be displayed
+                // Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!");
+                // Show the ad
+                //interstitialAd.show();
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+                // Ad clicked callback
+                // Log.d(TAG, "Interstitial ad clicked!");
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+                // Ad impression logged callback
+                // Log.d(TAG, "Interstitial ad impression logged!");
+            }
+        };
+        interstitialAd.loadAd(
+                interstitialAd.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build());
         final India.MyAdapter adapter = new India.MyAdapter(this,mTitle,mDescription,images);
 
             new CountDownTimer(3000, 1000) { // 60 seconds, in 1 second intervals
@@ -83,44 +171,84 @@ public class India extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
-                   Intent intent = new Intent(India.this,Paysense.class);
-                   startActivity(intent);
-                   finish();
+                    i = 1;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(India.this, Paysense.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 1){
-                    Intent intent = new Intent(India.this,Dhani.class);
-                    startActivity(intent);
-                    finish();
+                    i = 2;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(India.this, Dhani.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 2){
-                    Intent intent = new Intent(India.this,Loaninstant.class);
-                    startActivity(intent);
-                    finish();
+                    i = 3;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(India.this, Loaninstant.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 3){
-                    Intent intent = new Intent(India.this,KreditBee.class);
-                    startActivity(intent);
-                    finish();
+                    i = 4;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(India.this, KreditBee.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 4){
-                    Intent intent = new Intent(India.this,Nira.class);
-                    startActivity(intent);
-                    finish();
+                    i = 5;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(India.this, Nira.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 5){
-                    Intent intent = new Intent(India.this,Personal.class);
-                    startActivity(intent);
-                    finish();
+                    i = 6;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(India.this, Personal.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 6){
-                    Intent intent = new Intent(India.this,FlexSalary.class);
-                    startActivity(intent);
-                    finish();
+                    i = 7;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(India.this, FlexSalary.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 7){
-                    Intent intent = new Intent(India.this,IOFC.class);
-                    startActivity(intent);
-                    finish();
+                    i = 8;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(India.this, IOFC.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
 
             }
@@ -170,12 +298,13 @@ public class India extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(India.this,LandingPage.class);
-        startActivity(intent);
-        finish();
+        i = 57;
         if (interstitialAd.isAdLoaded()){
             interstitialAd.show();
+        }else {
+            Intent intent = new Intent(India.this, LandingPage.class);
+            startActivity(intent);
+            finish();
         }
 
 }

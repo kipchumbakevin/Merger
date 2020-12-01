@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorDont"
     android:paddingStart="20dp"
-    android:gravity="center"
     android:paddingEnd="20dp"
     android:paddingBottom="2dp"
     tools:context=".OptionsActivity">
@@ -16,6 +15,7 @@
         android:textSize="15sp"
         android:drawablePadding="20dp"
         android:gravity="center"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:textColor="#ffffff"
         android:background="@drawable/text"
@@ -38,6 +38,13 @@
         app:layout_constraintStart_toStartOf="parent"
         android:text="Make money"
         app:layout_constraintTop_toBottomOf="@id/loans"/>
-
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/banner_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentBottom="true"
+        />
 
 </RelativeLayout>

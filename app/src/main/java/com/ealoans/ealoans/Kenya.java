@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -30,8 +31,6 @@ import com.facebook.ads.AudienceNetworkAds;
 
 public class Kenya extends AppCompatActivity {
 
-    private AdView adView;
-    private InterstitialAd interstitialAd;
     private final String TAG = Kenya.class.getSimpleName();
     LinearLayoutCompat adContainer;
     ListView listView;
@@ -47,7 +46,10 @@ public class Kenya extends AppCompatActivity {
     int images[]={R.drawable.tala,R.drawable.zenka,R.drawable.opesa,R.drawable.timiza,R.drawable.ipesa,R.drawable.carbon,
     R.drawable.kcb,R.drawable.stawika,R.drawable.branch};
     ProgressBar pr;
-
+    int i = 0;
+    InterstitialAdListener interstitialAdListener;
+    private AdView adView;
+    private InterstitialAd interstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +58,105 @@ public class Kenya extends AppCompatActivity {
         pr  = findViewById(R.id.pr);
 
         AudienceNetworkAds.initialize(this);
-        adView = new AdView(this,getString(R.string.banner), AdSize.BANNER_HEIGHT_50);
-        adContainer = findViewById(R.id.banner_container);
-        interstitialAd = new InterstitialAd(this,getString(R.string.interstitial));
-        //607402693307934_607763939938476
-        interstitialAd.loadAd();
-        adView.loadAd();
+        adView = new AdView(Kenya.this, getString(R.string.banner), AdSize.BANNER_HEIGHT_50);
+
+        // Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+
+        // Add the ad view to your activity layout
         adContainer.addView(adView);
+
+        // Request an ad
+        adView.loadAd();
+        interstitialAd = new InterstitialAd(Kenya.this, getString(R.string.interstitial));
+
+        interstitialAdListener = new InterstitialAdListener() {
+            @Override
+            public void onInterstitialDisplayed(Ad ad) {
+                // Interstitial ad displayed callback
+                //  Log.e(TAG, "Interstitial ad displayed.");
+            }
+
+            @Override
+            public void onInterstitialDismissed(Ad ad) {
+                // Interstitial dismissed callback
+                //  Log.e(TAG, "Interstitial ad dismissed.");
+                if (i == 1){
+                    Intent intent = new Intent(Kenya.this, Tala.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 2){
+                    Intent intent = new Intent(Kenya.this, Zenka.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 3){
+                    Intent intent = new Intent(Kenya.this, Opesa.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 4){
+                    Intent intent = new Intent(Kenya.this, Timiza.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 5){
+                    Intent intent = new Intent(Kenya.this, Ipesa.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 6){
+                    Intent intent = new Intent(Kenya.this, Carbon.class);
+                    intent.putExtra("TT",Integer.toString(3));
+                    startActivity(intent);
+                    finish();
+                }else if (i == 7){
+                    Intent intent = new Intent(Kenya.this, KCB.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 8){
+                    Intent intent = new Intent(Kenya.this, Stawika.class);
+                    startActivity(intent);
+                    finish();
+                }else if (i == 9){
+                    Intent intent = new Intent(Kenya.this, Branch.class);
+                    intent.putExtra("TT",Integer.toString(1));
+                    startActivity(intent);
+                    finish();
+                }else if (i == 57){
+                    Intent intent = new Intent(Kenya.this, LandingPage.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+
+            @Override
+            public void onError(Ad ad, AdError adError) {
+                // Ad error callback
+                //Log.e(TAG, "Interstitial ad failed to load: " + adError.getErrorMessage());
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Interstitial ad is loaded and ready to be displayed
+                // Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!");
+                // Show the ad
+                //interstitialAd.show();
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+                // Ad clicked callback
+                // Log.d(TAG, "Interstitial ad clicked!");
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+                // Ad impression logged callback
+                // Log.d(TAG, "Interstitial ad impression logged!");
+            }
+        };
+        interstitialAd.loadAd(
+                interstitialAd.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build());
         final MyAdapter adapter = new MyAdapter(this,mTitle,mDescription,images);
             new CountDownTimer(3000, 1000) { // 60 seconds, in 1 second intervals
                 public void onTick(long millisUntilFinished) {
@@ -79,50 +173,96 @@ public class Kenya extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
-                    Intent intent = new Intent(Kenya.this,Tala.class);
-                    startActivity(intent);
-                    finish();
-
+                    i=1;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, Tala.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 1){
-                    Intent intent = new Intent(Kenya.this,Zenka.class);
-                    startActivity(intent);
-                    finish();
+                    i=2;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, Zenka.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 2){
-                    Intent intent = new Intent(Kenya.this,Opesa.class);
-                    startActivity(intent);
-                    finish();
+                    i=3;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, Opesa.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 3){
-                    Intent intent = new Intent(Kenya.this,Timiza.class);
-                    startActivity(intent);
-                    finish();
+                    i=4;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, Timiza.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 4){
-                    Intent intent = new Intent(Kenya.this,Ipesa.class);
-                    startActivity(intent);
-                    finish();
+                    i=5;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, Ipesa.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 5){
-                    Intent intent = new Intent(Kenya.this,Carbon.class);
-                    startActivity(intent);
-                    finish();
+                    i=6;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, Carbon.class);
+                        intent.putExtra("TT",Integer.toString(3));
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 6){
-                    Intent intent = new Intent(Kenya.this,KCB.class);
-                    startActivity(intent);
-                    finish();
+                    i=7;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, KCB.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 7){
-                    Intent intent = new Intent(Kenya.this,Stawika.class);
-                    startActivity(intent);
-                    finish();
+                    i=8;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, Stawika.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 if (position == 8) {
-                    Intent intent = new Intent(Kenya.this, Branch.class);
-                    startActivity(intent);
-                    finish();
+                    i=9;
+                    if (interstitialAd.isAdLoaded()){
+                        interstitialAd.show();
+                    }else {
+                        Intent intent = new Intent(Kenya.this, Branch.class);
+                        intent.putExtra("TT",Integer.toString(1));
+                        startActivity(intent);
+                        finish();
+                    }
                 }
 
             }
@@ -173,13 +313,13 @@ public class Kenya extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
-        Intent intent = new Intent(Kenya.this,LandingPage.class);
-        startActivity(intent);
-        finish();
+        i = 57;
         if (interstitialAd.isAdLoaded()){
             interstitialAd.show();
+        }else {
+            Intent intent = new Intent(Kenya.this,LandingPage.class);
+            startActivity(intent);
+            finish();
         }
 
     }
