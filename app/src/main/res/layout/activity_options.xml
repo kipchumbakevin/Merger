@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDont"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="2dp"
+    tools:context=".OptionsActivity">
+    <TextView
+        android:id="@+id/loans"
+        android:paddingStart="5dp"
+        android:textSize="15sp"
+        android:layout_marginTop="150dp"
+        android:drawablePadding="20dp"
+        android:gravity="center"
+
+        android:layout_width="match_parent"
+        android:textColor="#ffffff"
+        android:background="@drawable/text"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Loans"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/earnings"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/text"
+        android:textColor="#ffffff"
+        android:layout_height="30dp"
+        android:drawablePadding="20dp"
+        android:gravity="center"
+        android:paddingStart="5dp"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Make money"
+        app:layout_constraintTop_toBottomOf="@id/loans"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

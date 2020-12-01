@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ealoans.ealoans">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Splash"></activity>
+        <activity android:name=".IOFC" />
+        <activity android:name=".FlexSalary" />
+        <activity android:name=".Personal" />
+        <activity android:name=".Nira" />
+        <activity android:name=".KreditBee" />
+        <activity android:name=".Loaninstant" />
+        <activity android:name=".Dhani" />
+        <activity android:name=".Paysense" />
+        <activity android:name=".Quickcheck" />
+        <activity android:name=".Aella" />
+        <activity android:name=".Sokoloan" />
+        <activity android:name=".PalmCredit" />
+        <activity android:name=".Branch" />
+        <activity android:name=".Stawika" />
+        <activity android:name=".KCB" />
+        <activity android:name=".Fairmoney" />
+        <activity android:name=".Carbon" />
+        <activity android:name=".Ipesa" />
+        <activity android:name=".Timiza" />
+        <activity android:name=".Opesa" />
+        <activity android:name=".Tala" />
+        <activity android:name=".Zenka" />
+        <activity android:name=".OptionsActivity" />
+        <activity
+            android:name=".LandingPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".India"
+            android:label="Loan apps in India" />
+        <activity
+            android:name=".Nigeria"
+            android:label="Loan apps in Nigeria" />
+        <activity
+            android:name=".Kenya"
+            android:label="Loan apps in Kenya" />
+    </application>
+
+</manifest>
