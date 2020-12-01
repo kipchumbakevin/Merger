@@ -3,7 +3,10 @@ package com.ealoans.ealoans.makemoney;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 

@@ -27,17 +27,16 @@ import com.facebook.ads.AudienceNetworkAds;
 import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 
+import org.w3c.dom.Text;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment {
 
-    RelativeLayout bitcoin;
-    LinearLayoutCompat insurance,sellads,marketing,ecommerce,digitalcourse,membershipsite,directory,buysellwebsites,youtube;
-    CardView share,rate;
+    TextView insurance,sellads,marketing,ecommerce,digitalcourse,membershipsite,directory,buysellwebsites,bitcoin,youtube;
     private AdView adView;
-    TextView policy;
     private InterstitialAd interstitialAd;
     int i = 0;
 
@@ -55,9 +54,6 @@ public class MainFragment extends Fragment {
         insurance = view.findViewById(R.id.insurance);
         sellads = view.findViewById(R.id.sellads);
         marketing = view.findViewById(R.id.marketing);
-        share = view.findViewById(R.id.share);
-        rate = view.findViewById(R.id.rate);
-        policy = view.findViewById(R.id.policy);
         ecommerce = view.findViewById(R.id.ecommerce);
         digitalcourse = view.findViewById(R.id.digitalcourse);
         membershipsite = view.findViewById(R.id.membershipsite);
@@ -316,55 +312,8 @@ public class MainFragment extends Fragment {
                 }
             }
         });
-        rate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=" + getActivity().getPackageName());
-                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-                // To count with Play market backstack, After pressing back button,
-                // to taken back to our application, we need to add following flags to intent.
-                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                try {
-                    startActivity(goToMarket);
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
-                }
-            }
-        });
-        policy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("https://lovidovi.co.ke/appprivacypolicy");
-                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-                // To count with Play market backstack, After pressing back button,
-                // to taken back to our application, we need to add following flags to intent.
-                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                try {
-                    startActivity(goToMarket);
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://lovidovi.co.ke/appprivacypolicy")));
-                }
-            }
-        });
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                String shareBody =
-                        "Find ideas to earn you money!. Download cashASAP App now at https://play.google.com/store/apps/details?id="
-                                + getActivity().getPackageName();
-                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-                intent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(intent, "Share via"));
-            }
-        });
+
+
         return view;
     }
     @Override

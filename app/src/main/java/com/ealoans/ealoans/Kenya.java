@@ -56,9 +56,9 @@ public class Kenya extends AppCompatActivity {
         pr  = findViewById(R.id.pr);
 
         AudienceNetworkAds.initialize(this);
-        adView = new AdView(this,"607402693307934_607717893276414", AdSize.BANNER_HEIGHT_50);
+        adView = new AdView(this,getString(R.string.banner), AdSize.BANNER_HEIGHT_50);
         adContainer = findViewById(R.id.banner_container);
-        interstitialAd = new InterstitialAd(this,"607402693307934_607763939938476");
+        interstitialAd = new InterstitialAd(this,getString(R.string.interstitial));
         //607402693307934_607763939938476
         interstitialAd.loadAd();
         adView.loadAd();
@@ -74,59 +74,6 @@ public class Kenya extends AppCompatActivity {
                     listView.setAdapter(adapter);
                 }
             }.start();
-
-        adView.setAdListener(new AdListener() {
-            @Override
-            public void onError(Ad ad, AdError adError) {
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-            }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-
-            }
-        });
-        interstitialAd.setAdListener(new InterstitialAdListener() {
-            @Override
-            public void onInterstitialDisplayed(Ad ad) {
-
-            }
-
-            @Override
-            public void onInterstitialDismissed(Ad ad) {
-
-            }
-
-            @Override
-            public void onError(Ad ad, AdError adError) {
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-
-            }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-
-            }
-        });
-
-
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

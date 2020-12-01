@@ -9,6 +9,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:background="@color/colorDont"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_height="match_parent"
         tools:context=".NextPageActivity">
         <ScrollView
@@ -18,308 +22,138 @@
             android:layout_marginBottom="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_height="0dp">
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content">
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/sellprogramming"
-                    android:orientation="vertical"
-                    android:layout_marginTop="20dp"
-                    android:padding="2dp"
-                    app:layout_constraintTop_toBottomOf="@id/websitedeveloper"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_height="wrap_content">
                     <TextView
-                        android:layout_width="wrap_content"
                         android:textColor="#fff"
+                        android:id="@+id/sellprogramming"
                         android:textSize="13sp"
-                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
                         android:text="Programming"/>
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/ff"
-                        android:layout_marginTop="5dp"
-                        android:layout_width="100dp"
-                        app:cardCornerRadius="4dp"
-                        android:layout_height="100dp">
-                        <ImageView
-                            android:id="@+id/image"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:fitsSystemWindows="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/sellprogramming" />
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:id="@+id/websitedeveloper"
-                    android:padding="2dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content">
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="2dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_height="wrap_content">
+
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="#fff"
+                        android:layout_below="@id/sellprogramming"
+                        android:id="@+id/websitedeveloper"
                         android:textSize="13sp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_centerInParent="true"
-                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
                         android:text="Website developer"/>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        app:cardCornerRadius="8dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="400dp"
-                            android:layout_height="100dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/websitedeveloper" />
-
-                    </androidx.cardview.widget.CardView>
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                </RelativeLayout>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/instagram"
-                    android:orientation="vertical"
-                    android:padding="2dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/websitedeveloper"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content">
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_below="@id/websitedeveloper"
                         android:textColor="#fff"
+                        android:id="@+id/instagram"
                         android:textSize="13sp"
-                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
                         android:text="Instagram"/>
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        app:cardCornerRadius="4dp"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:scaleType="fitXY"
-                            android:layout_height="100dp"
-                            android:src="@drawable/instagraminfluencer" />
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/affiliatewebsite"
-                    android:orientation="vertical"
-                    android:padding="2dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/sellprogramming"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="12sp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_height="wrap_content"
-                        android:text="Affiliate website"/>
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        app:cardCornerRadius="8dp"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/affiliatewebsite" />
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/resellwebshosting"
-                    android:orientation="vertical"
-                    android:layout_marginTop="20dp"
-                    android:padding="2dp"
-                    app:layout_constraintTop_toBottomOf="@id/affiliatewebsite"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="#fff"
-                        android:textSize="13sp"
-                        android:layout_height="wrap_content"
-                        android:text="Resell"/>
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="100dp"
-                        app:cardCornerRadius="4dp"
-                        android:layout_height="100dp">
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:fitsSystemWindows="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/resellwebhosting" />
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/sellyourservices"
-                    android:orientation="vertical"
-                    android:layout_marginTop="20dp"
-                    android:padding="2dp"
-                    app:layout_constraintTop_toBottomOf="@id/affiliatewebsite"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="#fff"
-                        android:textSize="13sp"
-                        android:layout_height="wrap_content"
-                        android:text="Services"/>
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="100dp"
-                        app:cardCornerRadius="4dp"
-                        android:layout_height="100dp">
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:fitsSystemWindows="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/sellservices" />
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/jobboard"
-                    android:orientation="vertical"
-                    android:padding="2dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/resellwebshosting"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="12sp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_height="wrap_content"
-                        android:text="Job boarding"/>
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        app:cardCornerRadius="8dp"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/jobboard" />
 
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/survey"
-                    android:orientation="vertical"
-                    android:layout_marginTop="20dp"
-                    android:padding="2dp"
-                    app:layout_constraintTop_toBottomOf="@id/jobboard"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_height="wrap_content">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="#fff"
-                        android:textSize="13sp"
-                        android:layout_height="wrap_content"
-                        android:text="Survey"/>
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="100dp"
-                        app:cardCornerRadius="4dp"
-                        android:layout_height="100dp">
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:fitsSystemWindows="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/surveys" />
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/socialmedia"
-                    android:orientation="vertical"
-                    android:layout_marginTop="20dp"
-                    android:padding="2dp"
-                    app:layout_constraintTop_toBottomOf="@id/jobboard"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="#fff"
-                        android:textSize="13sp"
-                        android:layout_height="wrap_content"
-                        android:text="Social "/>
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="100dp"
-                        app:cardCornerRadius="4dp"
-                        android:layout_height="100dp">
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:fitsSystemWindows="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/socialmediaaccounts" />
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:id="@+id/graphic"
-                    android:orientation="vertical"
-                    android:padding="2dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/survey"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="#fff"
+                        android:layout_below="@id/instagram"
+                        android:textColor="@color/colorWhite"
                         android:textSize="12sp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/affiliatewebsite"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
+                        android:text="Affiliate website"/>
+                    <TextView
+                        android:layout_below="@id/affiliatewebsite"
+                        android:textColor="#fff"
+                        android:id="@+id/resellwebshosting"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
+                        android:text="Resell"/>
+
+                    <TextView
+                        android:layout_below="@id/resellwebshosting"
+                        android:textColor="#fff"
+                        android:id="@+id/sellyourservices"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
+                        android:text="Services"/>
+
+                    <TextView
+                        android:layout_below="@id/sellyourservices"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        android:id="@+id/jobboard"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
+                        android:text="Job boarding"/>
+
+                    <TextView
+                        android:layout_below="@id/jobboard"
+                        android:textColor="#fff"
+                        android:id="@+id/survey"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
+                        android:text="Survey"/>
+
+                    <TextView
+                        android:textColor="#fff"
+                        android:id="@+id/socialmedia"
+                        android:layout_below="@id/survey"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
+                        android:text="Social "/>
+
+                    <TextView
+                        android:layout_below="@id/socialmedia"
+                        android:textColor="#fff"
+                        android:id="@+id/graphic"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text"
+                        android:layout_height="30dp"
                         android:text="Graphic"/>
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        app:cardCornerRadius="8dp"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/graphicdesigner" />
-                    </androidx.cardview.widget.CardView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
         </ScrollView>
         <LinearLayout
             android:id="@+id/banner_container"

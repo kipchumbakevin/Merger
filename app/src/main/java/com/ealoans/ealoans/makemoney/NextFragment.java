@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.ealoans.ealoans.R;
 import com.facebook.ads.Ad;
@@ -27,9 +28,8 @@ import com.facebook.ads.InterstitialAdListener;
  * A simple {@link Fragment} subclass.
  */
 public class NextFragment extends Fragment {
-    LinearLayoutCompat sellprogramming,instagram,affiliatewebsite,resellhosting,sellyours,
-            jobboard,survey,socialmedia,graphic;
-    RelativeLayout websitedeveloper;
+    TextView sellprogramming,instagram,affiliatewebsite,resellhosting,sellyours,
+            jobboard,survey,socialmedia,graphic, websitedeveloper;
     private AdView adView;
     private InterstitialAd interstitialAd;
     int i = 0;

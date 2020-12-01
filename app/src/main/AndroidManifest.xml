@@ -14,7 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Splash"></activity>
+        <activity android:name=".Splash"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".IOFC" />
         <activity android:name=".FlexSalary" />
         <activity android:name=".Personal" />
@@ -37,15 +44,11 @@
         <activity android:name=".Opesa" />
         <activity android:name=".Tala" />
         <activity android:name=".Zenka" />
-        <activity android:name=".OptionsActivity" />
+        <activity android:name=".OptionsActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".LandingPage"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".India"
@@ -56,6 +59,100 @@
         <activity
             android:name=".Kenya"
             android:label="Loan apps in Kenya" />
+
+
+        <activity
+            android:name=".makemoney.TransitionActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.Graphic"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.SocialManage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.Survey"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.YourServices"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.JobBoard"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.ResellWebhosting"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.AffiliateWebsite"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.Instagram"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.WebDeveloper"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.SellPrograming"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.Youtube"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.BuySellWebsites"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OnlineDirectory"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.MembershipSite"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.DigitalCourse"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.EcommerceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.FreeBitcoinActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".makemoney.BuySell"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.Bitcoin"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.Affiliate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.SocialMedia"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.MarketingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.AgentActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.BrokerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.InsuranceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.BlogActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.WebsiteActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.AdSpaceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".makemoney.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

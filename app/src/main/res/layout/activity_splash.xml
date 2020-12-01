@@ -47,6 +47,7 @@
         android:layout_width="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingStart="20dp"
+        android:id="@+id/proceed"
         android:paddingEnd="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -59,6 +60,7 @@
             android:layout_gravity="center"
             android:textSize="15sp"
             android:text="Proceed"
+            android:textColor="#000"
             android:drawableEnd="@drawable/ic_arrow_forward"
             android:drawablePadding="10dp"
             android:layout_height="wrap_content"/>

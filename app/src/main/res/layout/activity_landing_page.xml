@@ -33,8 +33,7 @@
         android:paddingStart="5dp"
         android:textSize="15sp"
         android:layout_marginTop="150dp"
-        android:drawablePadding="20dp"
-        android:drawableStart="@drawable/kenya"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:textColor="#ffffff"
         android:background="@drawable/text"
@@ -49,10 +48,9 @@
         android:background="@drawable/text"
         android:textColor="#ffffff"
         android:layout_height="30dp"
-        android:drawablePadding="20dp"
         android:paddingStart="5dp"
-        android:drawableStart="@drawable/nigeria"
         android:textSize="15sp"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         android:text="NIGERIA"
         app:layout_constraintTop_toBottomOf="@id/kenya"/>
@@ -62,43 +60,12 @@
         android:textColor="#ffffff"
         android:paddingStart="5dp"
         android:layout_marginTop="10dp"
-        android:drawablePadding="20dp"
         android:textSize="15sp"
-        android:drawableStart="@drawable/india"
+        android:gravity="center"
         android:layout_height="30dp"
         android:background="@drawable/text"
         app:layout_constraintStart_toStartOf="parent"
         android:text="INDIA"
         app:layout_constraintTop_toBottomOf="@id/nigeria"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:id="@+id/policy"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/india"
-        android:layout_marginTop="10dp"
-        android:text="By proceeding, you agree to our Privacy Policy"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/share"
-        android:drawableEnd="@drawable/ic_share"
-        android:textColor="#ffffff"
-        android:text="Share"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    <TextView
-        android:id="@+id/rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_star"
-        android:textColor="#ffffff"
-        android:text="Rate Us"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
