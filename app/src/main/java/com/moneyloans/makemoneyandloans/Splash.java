@@ -112,8 +112,8 @@ public class Splash extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                String shareBody = "Make money now and get insant loans.\n" +
-                        "Download App now at https://play.google.com/store/apps/details?id=" + Splash.this.getPackageName();
+                String shareBody = "Make money now and get instant loans.\n" +
+                        "Download iLoanApps now at https://play.google.com/store/apps/details?id=" + Splash.this.getPackageName();
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
                 intent.putExtra(Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(intent, "Share via"));
@@ -141,7 +141,7 @@ public class Splash extends AppCompatActivity {
         policy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri uri = Uri.parse("https://www.lovidovi.co.ke/privacypolicy");
+                Uri uri = Uri.parse("https://lovidovi.co.ke/iloanappspolicy");
                 Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
                 // To count with Play market backstack, After pressing back button,
                 // to taken back to our application, we need to add following flags to intent.
@@ -152,7 +152,7 @@ public class Splash extends AppCompatActivity {
                     startActivity(goToMarket);
                 } catch (ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://www.lovidovi.co.ke/privacypolicy")));
+                            Uri.parse("https://lovidovi.co.ke/iloanappspolicy")));
                 }
             }
         });
