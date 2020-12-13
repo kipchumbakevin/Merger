@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.money.moneyloans.R;
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
-import com.facebook.ads.AudienceNetworkAds;
-import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdListener;
 
 public class WebDeveloper extends AppCompatActivity {
     TextView message;
@@ -26,106 +26,46 @@ public class WebDeveloper extends AppCompatActivity {
         setContentView(R.layout.activity_web_developer);
         message = findViewById(R.id.meso);
 
-        AudienceNetworkAds.initialize(this);
+        adView = findViewById(R.id.banner_container);
 
-        adView = new AdView(this, getString(R.string.banner), AdSize.BANNER_HEIGHT_50);
-
-        // Find the Ad Container
-        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
-
-        // Add the ad view to your activity layout
-        adContainer.addView(adView);
-
-        // Request an ad
-        adView.loadAd();
-        interstitialAd = new InterstitialAd(this, getString(R.string.interstitial));
-        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-                //  Log.e(TAG, "Interstitial ad displayed.");
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.interstitial));
+        interstitialAd.loadAd(new AdRequest.Builder().build());
+        interstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
             }
 
             @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-                //  Log.e(TAG, "Interstitial ad dismissed.");
-                Intent intent = new Intent(WebDeveloper.this, TransitionActivity.class);
-                intent.putExtra("INTENT", Integer.toString(8));
-                startActivity(intent);
-                finish();
+            public void onAdOpened() {
+                super.onAdOpened();
             }
 
             @Override
-            public void onError(Ad ad, AdError adError) {
-                // Ad error callback
-                //Log.e(TAG, "Interstitial ad failed to load: " + adError.getErrorMessage());
+            public void onAdLoaded() {
+                super.onAdLoaded();
             }
 
             @Override
-            public void onAdLoaded(Ad ad) {
-                // Interstitial ad is loaded and ready to be displayed
-                // Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!");
-                // Show the ad
-                //interstitialAd.show();
+            public void onAdClicked() {
+                super.onAdClicked();
             }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-                // Ad clicked callback
-                // Log.d(TAG, "Interstitial ad clicked!");
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Ad impression logged callback
-                // Log.d(TAG, "Interstitial ad impression logged!");
-            }
-        };
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
-    }
-    @Override
-    protected void onDestroy() {
-        if (adView != null) {
-            adView.destroy();
-        }if (interstitialAd != null){
-            interstitialAd.destroy();
-        }
-        super.onDestroy();
+        });
     }
 
-//    public void setText(final String s) {
-//        final int[] i = new int[1];
-//        final int length = s.length();
-//        @SuppressLint("HandlerLeak") final Handler handler = new Handler() {
-//            @Override
-//            public void handleMessage(Message msg) {
-//                super.handleMessage(msg);
-//                char c = s.charAt(i[0]);
-//                message.append(String.valueOf(c));
-//                i[0]++;
-//
-//            }
-//        };
-//        final Timer timer = new Timer();
-//        TimerTask taskEverySplitSecond = new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.sendEmptyMessage(0);
-//                if (i[0] == length - 1) {
-//                    timer.cancel();
-//                }
-//            }
-//        };
-//        timer.schedule(taskEverySplitSecond, 1, 20);
-//    }
 
     @Override
     public void onBackPressed() {
-        if (interstitialAd.isAdLoaded()){
+        if (interstitialAd.isLoaded()){
             interstitialAd.show();
         }else {
             Intent intent = new Intent(WebDeveloper.this, TransitionActivity.class);

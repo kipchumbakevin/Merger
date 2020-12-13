@@ -153,6 +153,9 @@
             android:name="com.money.moneyloans.makemoney.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1869318073205524~6508425223"/>
     </application>
 
 </manifest>

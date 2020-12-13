@@ -14,13 +14,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
-import com.facebook.ads.AudienceNetworkAds;
-import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdListener;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 
 public class Fairmoney extends AppCompatActivity {
 
@@ -45,7 +46,6 @@ public class Fairmoney extends AppCompatActivity {
             "<li>No additional fees for processing your loan or any hidden costs associated.\n" +
             "<li> repayment periods from 61 days to 180days at monthly interest rates that range from 10% to 30% (APRs from 120% to 360%).</li> " ;
 
-    InterstitialAdListener interstitialAdListener;
     private AdView adView;
     private InterstitialAd interstitialAd;
 
@@ -54,68 +54,40 @@ public class Fairmoney extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_details);
 
-        AudienceNetworkAds.initialize(this);
-        adView = new AdView(Fairmoney.this, getString(R.string.banner), AdSize.BANNER_HEIGHT_50);
+        adView = findViewById(R.id.banner_container);
 
-        // Find the Ad Container
-        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
-
-        // Add the ad view to your activity layout
-        adContainer.addView(adView);
-
-        // Request an ad
-        adView.loadAd();
-        interstitialAd = new InterstitialAd(Fairmoney.this, getString(R.string.interstitial));
-
-        interstitialAdListener = new InterstitialAdListener() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-                //  Log.e(TAG, "Interstitial ad displayed.");
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.interstitial));
+        interstitialAd.loadAd(new AdRequest.Builder().build());
+        interstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
             }
 
             @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-                //  Log.e(TAG, "Interstitial ad dismissed.");
-
-                Intent intent = new Intent(Fairmoney.this,Nigeria.class);
-                startActivity(intent);
-                finish();
-
-
+            public void onAdOpened() {
+                super.onAdOpened();
             }
 
             @Override
-            public void onError(Ad ad, AdError adError) {
-                // Ad error callback
-                //Log.e(TAG, "Interstitial ad failed to load: " + adError.getErrorMessage());
+            public void onAdLoaded() {
+                super.onAdLoaded();
             }
 
             @Override
-            public void onAdLoaded(Ad ad) {
-                // Interstitial ad is loaded and ready to be displayed
-                // Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!");
-                // Show the ad
-                //interstitialAd.show();
+            public void onAdClicked() {
+                super.onAdClicked();
             }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-                // Ad clicked callback
-                // Log.d(TAG, "Interstitial ad clicked!");
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Ad impression logged callback
-                // Log.d(TAG, "Interstitial ad impression logged!");
-            }
-        };
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
+        });
         getSupportActionBar().setTitle("Fairmoney Loan App");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -168,7 +140,7 @@ public class Fairmoney extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (interstitialAd.isAdLoaded()){
+        if (interstitialAd.isLoaded()){
             interstitialAd.show();
         }else {
             Intent intent = new Intent(Fairmoney.this,Nigeria.class);

@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.money.moneyloans.OnlineDirectory;
 import com.money.moneyloans.R;
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
-import com.facebook.ads.AudienceNetworkAds;
-import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdListener;
 
 public class TransitionActivity extends AppCompatActivity {
     TextView title,desc,shortd;
@@ -33,192 +33,53 @@ public class TransitionActivity extends AppCompatActivity {
         desc = findViewById(R.id.ff);
         imageView = findViewById(R.id.image);
         shortd = findViewById(R.id.buysell);
-        AudienceNetworkAds.initialize(this);
-        adView = new AdView(this, getString(R.string.banner), AdSize.BANNER_HEIGHT_50);
+        adView = findViewById(R.id.banner_container);
 
-        // Find the Ad Container
-        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
-
-        // Add the ad view to your activity layout
-        adContainer.addView(adView);
-
-        // Request an ad
-        adView.loadAd();
-
-        i = Integer.parseInt(getIntent().getExtras().getString("INTENT"));
-        if (getIntent().hasExtra("GOBACK")){
-            t = Integer.parseInt(getIntent().getExtras().getString("GOBACK"));
-        }
-
-        interstitialAd = new InterstitialAd(this, getString(R.string.interstitial));
-        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-                //  Log.e(TAG, "Interstitial ad displayed.");
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.interstitial));
+        interstitialAd.loadAd(new AdRequest.Builder().build());
+        interstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
             }
 
             @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-                //  Log.e(TAG, "Interstitial ad dismissed.");
-                if (i == 1){
-
-                        Intent intent = new Intent(TransitionActivity.this, EcommerceActivity.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 2){
-
-                        Intent intent = new Intent(TransitionActivity.this, DigitalCourse.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 3){
-
-                        Intent intent = new Intent(TransitionActivity.this, MembershipSite.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 4){
-
-                        Intent intent = new Intent(TransitionActivity.this, OnlineDirectory.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 5){
-
-                        Intent intent = new Intent(TransitionActivity.this, BuySellWebsites.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 6){
-
-                        Intent intent = new Intent(TransitionActivity.this, Youtube.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 7){
-
-                        Intent intent = new Intent(TransitionActivity.this, SellPrograming.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 8){
-
-                        Intent intent = new Intent(TransitionActivity.this, WebDeveloper.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 9){
-
-                        Intent intent = new Intent(TransitionActivity.this, Instagram.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 10){
-
-                        Intent intent = new Intent(TransitionActivity.this, AffiliateWebsite.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 11){
-
-                        Intent intent = new Intent(TransitionActivity.this, ResellWebhosting.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 12){
-
-                        Intent intent = new Intent(TransitionActivity.this, YourServices.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 13){
-
-                        Intent intent = new Intent(TransitionActivity.this, JobBoard.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 14){
-
-                        Intent intent = new Intent(TransitionActivity.this, Survey.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 15){
-
-                        Intent intent = new Intent(TransitionActivity.this, SocialManage.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 16){
-
-                        Intent intent = new Intent(TransitionActivity.this, Graphic.class);
-                        startActivity(intent);
-                        finish();
-
-                }else if (i == 17) {
-                    Intent intent = new Intent(TransitionActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                }
-
-
-            @Override
-            public void onError(Ad ad, AdError adError) {
-                // Ad error callback
-                //Log.e(TAG, "Interstitial ad failed to load: " + adError.getErrorMessage());
+            public void onAdOpened() {
+                super.onAdOpened();
             }
 
             @Override
-            public void onAdLoaded(Ad ad) {
-                // Interstitial ad is loaded and ready to be displayed
-                // Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!");
-                // Show the ad
-                //interstitialAd.show();
+            public void onAdLoaded() {
+                super.onAdLoaded();
             }
 
             @Override
-            public void onAdClicked(Ad ad) {
-                // Ad clicked callback
-                // Log.d(TAG, "Interstitial ad clicked!");
+            public void onAdClicked() {
+                super.onAdClicked();
             }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Ad impression logged callback
-                // Log.d(TAG, "Interstitial ad impression logged!");
-            }
-        };
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
+        });
 
         populate();
 
         shortd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (interstitialAd.isAdLoaded()){
-                    interstitialAd.show();
-                }else {
+
                     goOn();
-                }
+
             }
         });
     }
-    @Override
-    protected void onDestroy() {
-        if (adView != null) {
-            adView.destroy();
-        }if (interstitialAd != null){
-            interstitialAd.destroy();
-        }
-        super.onDestroy();
-    }
+
 
     private void goOn() {
         if (i == 1){
@@ -234,13 +95,11 @@ public class TransitionActivity extends AppCompatActivity {
                 finish();
 
         }else if (i == 3){
-            if (interstitialAd.isAdLoaded()){
-                interstitialAd.show();
-            }else {
+
                 Intent intent = new Intent(TransitionActivity.this, MembershipSite.class);
                 startActivity(intent);
                 finish();
-            }
+
         }else if (i == 4){
                 Intent intent = new Intent(TransitionActivity.this, OnlineDirectory.class);
                 startActivity(intent);
@@ -409,7 +268,7 @@ public class TransitionActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         i=17;
-        if (interstitialAd.isAdLoaded()){
+        if (interstitialAd.isLoaded()){
             interstitialAd.show();
         }else {
                 Intent intent = new Intent(TransitionActivity.this, MainActivity.class);

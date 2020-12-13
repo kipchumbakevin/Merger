@@ -6,12 +6,14 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.money.moneyloans.OptionsActivity;
 import com.money.moneyloans.R;
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdListener;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -20,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     private InterstitialAd interstitialAd;
     int i = 0;
-    InterstitialAdListener interstitialAdListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,56 +30,37 @@ public class MainActivity extends AppCompatActivity {
         tab_two = findViewById(R.id.tab_two);
         tabLayout = findViewById(R.id.tab);
 
-        interstitialAd = new InterstitialAd(MainActivity.this, getString(R.string.interstitial));
-
-        interstitialAdListener = new InterstitialAdListener() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-                //  Log.e(TAG, "Interstitial ad displayed.");
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.interstitial));
+        interstitialAd.loadAd(new AdRequest.Builder().build());
+        interstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
             }
 
             @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-                //  Log.e(TAG, "Interstitial ad dismissed.");
-                if (i == 57) {
-                    Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+            public void onAdOpened() {
+                super.onAdOpened();
             }
 
             @Override
-            public void onError(Ad ad, AdError adError) {
-                // Ad error callback
-                //Log.e(TAG, "Interstitial ad failed to load: " + adError.getErrorMessage());
+            public void onAdLoaded() {
+                super.onAdLoaded();
             }
 
             @Override
-            public void onAdLoaded(Ad ad) {
-                // Interstitial ad is loaded and ready to be displayed
-                // Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!");
-                // Show the ad
-                //interstitialAd.show();
+            public void onAdClicked() {
+                super.onAdClicked();
             }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-                // Ad clicked callback
-                // Log.d(TAG, "Interstitial ad clicked!");
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Ad impression logged callback
-                // Log.d(TAG, "Interstitial ad impression logged!");
-            }
-        };
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
+        });
         loadOne();
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -86,14 +68,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (tab.getPosition()){
                     case 0:
                         i = 1;
-                        if (interstitialAd.isAdLoaded()) {
+                        if (interstitialAd.isLoaded()) {
                             interstitialAd.show();
                         }
                            loadOne();
                         break;
                     case 1:
                         i = 2;
-                        if (interstitialAd.isAdLoaded()) {
+                        if (interstitialAd.isLoaded()) {
                             interstitialAd.show();
                         }
                             loadTwo();
@@ -113,20 +95,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadTwo() {
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
+        interstitialAd.loadAd(new AdRequest.Builder().build());
         NextFragment fragment = new NextFragment();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragments,fragment,fragment.getTag()).commit();
     }
 
     private void loadOne() {
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
+        interstitialAd.loadAd(new AdRequest.Builder().build());
         MainFragment fragment = new MainFragment();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragments,fragment,fragment.getTag()).commit();
@@ -135,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         i = 57;
-        if (interstitialAd.isAdLoaded()){
+        if (interstitialAd.isLoaded()){
             interstitialAd.show();
         }else {
             Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
